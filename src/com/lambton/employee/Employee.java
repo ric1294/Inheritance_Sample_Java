@@ -2,22 +2,41 @@ package com.lambton.employee;
 
 import com.lambton.Gender;
 import com.lambton.Person;
+import com.lambton.customException.InValidNameException;
+import com.lambton.customException.InValidSalaryException;
 import com.lambton.vehicle.Vehicle;
 
-public class Employee extends Person {
+import javax.xml.bind.ValidationException;
 
-    double totalSalary;
+public abstract class  Employee extends Person   {
 
-    public Employee(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, double totalSalary) {
+    double baseSalary;
+
+    public Employee(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, double baseSalary) throws InValidSalaryException, InValidNameException {
         super(id, firstname, lastname, gender, vehicle);
-        this.totalSalary = totalSalary;
+        if(InValidSalaryException.validateSalary(baseSalary)){
+            this.baseSalary = baseSalary;
+        }else{
+            throw new InValidSalaryException("Invalid Salary: "+baseSalary);
+        }
+
     }
 
-    public double getTotalSalary() {
-        return totalSalary;
+    public double getBaseSalary() {
+        return baseSalary;
     }
 
-    public void setTotalSalary(double totalSalary) {
-        this.totalSalary = totalSalary;
+    public void setBaseSalary(double baseSalary) throws InValidSalaryException {
+
+        if(InValidSalaryException.validateSalary(baseSalary)){
+            this.baseSalary = baseSalary;
+        }else{
+            throw new InValidSalaryException("Invalid Salary: "+baseSalary);
+        }
     }
+
+    public abstract double calculateTotalSalary();
+
+
+
 }

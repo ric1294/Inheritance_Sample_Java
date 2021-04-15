@@ -1,13 +1,17 @@
 package com.lambton.employee;
 
 import com.lambton.Gender;
+import com.lambton.customException.InValidNameException;
+import com.lambton.customException.InValidSalaryException;
 import com.lambton.vehicle.Vehicle;
 
-public class Faculty extends Employee{
+import javax.xml.bind.ValidationException;
+
+public abstract class Faculty extends Employee{
 
     String department;
 
-    public Faculty(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, double totalSalary, String department) {
+    public Faculty(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, double totalSalary, String department) throws InValidSalaryException, InValidNameException {
         super(id, firstname, lastname, gender, vehicle, totalSalary);
         this.department = department;
     }

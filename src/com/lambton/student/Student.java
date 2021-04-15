@@ -2,14 +2,15 @@ package com.lambton.student;
 
 import com.lambton.Gender;
 import com.lambton.Person;
+import com.lambton.customException.InValidNameException;
 import com.lambton.vehicle.Vehicle;
 
-public class Student extends Person {
+public abstract class Student extends Person{
     String collegeName;
     String courseName;
     String result;
 
-    public Student(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, String collegeName, String courseName, String result) {
+    public Student(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, String collegeName, String courseName, String result) throws InValidNameException {
         super(id, firstname, lastname, gender, vehicle);
         this.collegeName = collegeName;
         this.courseName = courseName;

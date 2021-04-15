@@ -1,16 +1,16 @@
 package com.lambton.vehicle;
 
 import com.lambton.Gender;
+import com.lambton.IDisplay;
 import com.lambton.Person;
 
-public class Vehicle extends Person {
+public abstract class Vehicle implements IDisplay {
 
     int VIN;
     String brand;
     Boolean isInsured;
 
-    public Vehicle(int id, String firstname, String lastname, Gender gender, Vehicle vehicle, int VIN, String brand, Boolean isInsured) {
-        super(id, firstname, lastname, gender, vehicle);
+    public Vehicle(int VIN, String brand, Boolean isInsured) {
         this.VIN = VIN;
         this.brand = brand;
         this.isInsured = isInsured;
@@ -39,4 +39,8 @@ public class Vehicle extends Person {
     public void setInsured(Boolean insured) {
         isInsured = insured;
     }
+
+    public  abstract String getType();
+
+
 }
